@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista</title>
+</head>
+<body>
+    <h1>Tabela</h1>
+    {% if pokemons %}
+    <table border="1">
+        <tr>
+            <th>ID</th>
+            <th>Nome</th>
+            <th>Tipos</th>
+            <th>Altura</th>
+            <th>Peso</th>
+            <th colspan="2">Ações</th>
+        </tr>
+        {% for pokemon in pokemons %}
+        <tr>
+            <td>{{ pokemon.id_pokemon }}</td>
+            <td>{{ pokemon.name }}</td>
+            <td>{{ pokemon.types }}</td>
+            <td>{{ pokemon.height }}</td>
+            <td>{{ pokemon.weight }}</td>
+            <td><a href="{% url 'atualizar_pokemon' pk=pokemon.pk %}"><button>Atualizar</button></a></td>
+            <td><a href="{% url 'deletar_pokemon' pk=pokemon.pk %}"><button>Deletar</button></a></td>
+        </tr>
+        {% endfor %}
+    </table>
+    {% else %}
+    <p>Nenhum pokemon</p>
+    {% endif %}
+    <br>
+    <a href="{% url 'criar_pokemon' %}"><button>Capturar</button></a>
+    
+</body>
+</html>
