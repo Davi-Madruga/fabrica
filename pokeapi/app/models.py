@@ -6,3 +6,7 @@ class Pokemon(models.Model):
     types = models.CharField()
     height = models.CharField()
     weight = models.CharField()
+    image_url = models.URLField()
+    
+    def __str__(self):
+        return f"#{self.id_pokemon}|{self.name}"
